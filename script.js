@@ -10,17 +10,17 @@ window.onmouseup = () => {
 }
 
 window.onmousemove = e => {
-    if(track.dataset.mouseDownAt === '0') return;
+    if(track.dataset.mouseDownAt === "0") return;
 
     const mouseDelta  = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-    maxDela = window.innerWidth / 2;
+    maxDelta = window.innerWidth / 2;
 
-    const percentage = (mouseDelta / mouseDelta) * -100,
+    const percentage = (mouseDelta / maxDelta) * -100,
         nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
     track.dataset.percentage = nextPercentage;
 
     track.animate({
-        transform: `trasnlate(${nextPercentage}%, -50%)`
+        transform: `translate(${nextPercentage}%, -50%)`
     }, {duration: 1200, fill: "forwards"});
     
     for(const image of track.getElementsByClassName("image")) {
